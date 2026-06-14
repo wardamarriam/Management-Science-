@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Warda Marriam · Management Science Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ── OLIVE GREEN & LIGHT BLUE THEME ── */
+  :root {
+    --ink:      #1a2412;        /* deep olive-black — all body text */
+    --paper:    #f2f7f0;        /* very light sage — page bg */
+    --mist:     #c8dbc0;        /* olive green border */
+    --accent:   #4a7c59;        /* olive green — primary actions */
+    --accent2:  #2a7fa8;        /* light blue — secondary highlights */
+    --soft-blue:#e6f3f8;        /* light blue tint bg */
+    --soft-olive:#e8f0e4;       /* light olive tint bg */
+    --mid:      #3d5c35;        /* readable olive-green for secondary text */
+    --white:    #ffffff;
+    --dark:     #1e3a2f;        /* dark olive — dark sections */
+    --radius:   8px;
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(242,247,240,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--mist);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.5rem,5vw,4rem);
+    height: 58px;
+  }
+  .nav-brand {
+    font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.06em; color: var(--accent); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; flex-wrap: wrap; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 600; color: var(--ink);
+    text-decoration: none; letter-spacing: 0.02em; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent2); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 88vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(4rem,10vw,8rem) clamp(1.5rem,8vw,6rem);
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #e8f4e8 0%, #d4eaf5 100%);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.14em; color: var(--accent2); text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 5rem);
+    line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--dark); max-width: 820px; margin-bottom: 1.6rem;
+  }
+  .hero-title em { font-style: italic; color: var(--accent2); }
+  .hero-desc {
+    font-size: 1.05rem; color: #2d4a25; max-width: 540px;
+    line-height: 1.8; margin-bottom: 2.8rem; font-weight: 500;
+  }
+  .hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; }
+  .hero-meta-item span:first-child {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; font-weight: 600;
+  }
+  .hero-meta-item span:last-child {
+    font-size: 0.92rem; font-weight: 700; color: var(--dark);
+  }
+  .hero-bg-number {
+    position: absolute; right: -0.05em; bottom: -0.1em;
+    font-family: var(--serif); font-size: clamp(14rem, 28vw, 26rem);
+    line-height: 1; color: rgba(74,124,89,0.1); pointer-events: none;
+    user-select: none; z-index: 0;
+  }
+  #home > * { position: relative; z-index: 1; }
+
+  /* ── INTRO STRIP ── */
+  .intro-strip {
+    background: var(--dark); color: var(--white);
+    padding: 3rem clamp(1.5rem,8vw,6rem);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  }
+  .intro-strip h2 {
+    font-family: var(--serif); font-size: 1.8rem; line-height: 1.2;
+    margin-bottom: 0.8rem; color: #a8d8b0;
+  }
+  .intro-strip p { font-size: 0.94rem; color: #cce8d4; line-height: 1.75; }
+  @media(max-width:680px){ .intro-strip { grid-template-columns: 1fr; } }
+
+  /* ── MS INTRO SECTION ── */
+  #ms-intro {
+    background: var(--soft-blue);
+    border-top: 3px solid var(--accent2);
+    border-bottom: 3px solid var(--accent2);
+    padding: clamp(3rem,6vw,5rem) clamp(1.5rem,8vw,6rem);
+  }
+  #ms-intro .section-label { color: var(--accent2); margin-bottom: 0.5rem; }
+  #ms-intro h2 {
+    font-family: var(--serif); font-size: clamp(1.8rem,3.5vw,2.8rem);
+    color: var(--dark); margin-bottom: 1rem;
+  }
+  #ms-intro .ms-lead {
+    font-size: 1rem; color: #1a3a4a; line-height: 1.8;
+    max-width: 760px; margin-bottom: 2.5rem; font-weight: 500;
+  }
+  .concepts-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
+    gap: 1.2rem;
+  }
+  .concept-card {
+    background: var(--white); border: 2px solid var(--accent2);
+    border-radius: var(--radius); padding: 1.4rem;
+  }
+  .concept-card .c-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .concept-card h4 {
+    font-size: 0.88rem; font-weight: 700; color: var(--accent2);
+    margin-bottom: 0.4rem; letter-spacing: 0.02em;
+  }
+  .concept-card p { font-size: 0.82rem; color: #1a3a4a; line-height: 1.65; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.5rem; display: block;
+  }
+
+  /* ── PROJECTS GRID ── */
+  #portfolio { padding: clamp(4rem,8vw,6rem) clamp(1.5rem,8vw,6rem); }
+  #portfolio > .section-label { margin-bottom: 0.4rem; }
+  .portfolio-heading {
+    font-family: var(--serif); font-size: clamp(2rem,4vw,3.2rem);
+    color: var(--dark); margin-bottom: 0.6rem;
+  }
+  .portfolio-sub {
+    font-size: 0.95rem; color: var(--mid); margin-bottom: 3rem;
+    max-width: 480px; font-weight: 500;
+  }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--white); border: 2px solid var(--mist);
+    border-radius: var(--radius); padding: 1.8rem;
+    cursor: pointer; text-decoration: none; color: inherit;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(74,124,89,0.15);
+    border-color: var(--accent2);
+  }
+  .card-num {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--accent);
+    letter-spacing: 0.1em; font-weight: 600;
+  }
+  .card-title {
+    font-family: var(--serif); font-size: 1.35rem; line-height: 1.25;
+    color: var(--dark);
+  }
+  .card-desc { font-size: 0.87rem; color: #2d4a25; line-height: 1.7; flex: 1; font-weight: 500; }
+  .card-tag {
+    display: inline-block; background: var(--soft-olive); border: 1.5px solid var(--mist);
+    border-radius: 100px; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.04em; padding: 0.25rem 0.75rem; color: var(--accent);
+    align-self: flex-start;
+  }
+  .card-arrow {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.82rem; font-weight: 700; color: var(--accent2);
+    margin-top: 0.4rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none; border-top: 2px solid var(--mist);
+    margin: 0 clamp(1.5rem,8vw,6rem);
+  }
+
+  /* ── PROJECT PAGE ── */
+  .project-section {
+    padding: clamp(4rem,8vw,6rem) clamp(1.5rem,8vw,6rem);
+    scroll-margin-top: 58px;
+  }
+  .project-header {
+    display: flex; align-items: flex-start; gap: 2rem;
+    margin-bottom: 3rem; flex-wrap: wrap;
+  }
+  .project-number-big {
+    font-family: var(--serif); font-size: 5rem; line-height: 1;
+    color: var(--mist); flex-shrink: 0; font-weight: 400;
+  }
+  .project-header-text { flex: 1; min-width: 260px; }
+  .project-header-text h2 {
+    font-family: var(--serif); font-size: clamp(1.6rem,3vw,2.5rem);
+    color: var(--dark); margin-bottom: 0.4rem;
+  }
+  .project-header-text p { font-size: 0.92rem; color: var(--mid); font-weight: 600; }
+
+  /* sub-section */
+  .sub-section { margin-bottom: 3rem; }
+  .sub-section h3 {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark);
+    border-bottom: 3px solid var(--accent); display: inline-block;
+    padding-bottom: 0.3rem; margin-bottom: 1.2rem;
+  }
+  .sub-section p {
+    font-size: 0.96rem; line-height: 1.8; color: var(--ink);
+    max-width: 700px; margin-bottom: 0.9rem; font-weight: 500;
+  }
+
+  /* ── DEMO BOXES ── */
+  .demo-box {
+    background: var(--soft-olive); border: 2px solid var(--mist);
+    border-radius: var(--radius); padding: 2rem; margin-top: 1rem;
+  }
+  .demo-box label {
+    display: block; font-size: 0.8rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 0.3rem; letter-spacing: 0.04em;
+  }
+  .demo-box input[type=range] { width: 100%; accent-color: var(--accent); margin-bottom: 0.6rem; }
+  .demo-box input[type=number], .demo-box select {
+    width: 100%; padding: 0.5rem 0.75rem;
+    border: 2px solid var(--mist); border-radius: var(--radius);
+    font-family: var(--mono); font-size: 0.85rem; background: var(--white);
+    color: var(--ink); margin-bottom: 1rem; font-weight: 500;
+  }
+  .demo-output {
+    background: var(--white); border-radius: var(--radius); padding: 1rem 1.2rem;
+    font-size: 0.87rem; line-height: 1.75; color: var(--ink);
+    border-left: 4px solid var(--accent2); font-weight: 500;
+  }
+  .demo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media(max-width:560px){ .demo-row { grid-template-columns: 1fr; } }
+
+  /* ── EVIDENCE TABLES ── */
+  .evidence-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.87rem; margin-top: 0.5rem;
+  }
+  .evidence-table th {
+    background: var(--dark); color: #a8d8b0;
+    padding: 0.65rem 1rem; text-align: left;
+    font-size: 0.74rem; letter-spacing: 0.06em; font-weight: 700;
+  }
+  .evidence-table td {
+    padding: 0.65rem 1rem; border-bottom: 1.5px solid var(--mist);
+    color: var(--ink); font-weight: 500;
+  }
+  .evidence-table tr:nth-child(even) td { background: var(--soft-olive); }
+  .evidence-table tr:last-child td { border-bottom: none; }
+
+  /* ── BAR CHART ── */
+  .bar-chart { margin-top: 1rem; }
+  .bar-row {
+    display: grid; grid-template-columns: 140px 1fr 65px;
+    align-items: center; gap: 0.8rem; margin-bottom: 0.7rem;
+  }
+  .bar-label { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+  .bar-track { background: var(--mist); border-radius: 100px; height: 11px; }
+  .bar-fill { height: 100%; border-radius: 100px; background: var(--accent); transition: width .6s; }
+  .bar-value { font-family: var(--mono); font-size: 0.76rem; color: var(--dark); font-weight: 600; }
+
+  /* ── LEARN PILLARS ── */
+  .learn-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 0.5rem; }
+  @media(max-width:600px){ .learn-grid { grid-template-columns: 1fr; } }
+  .learn-card {
+    background: var(--soft-blue); border: 2px solid var(--accent2);
+    border-radius: var(--radius); padding: 1.4rem;
+  }
+  .learn-card h4 {
+    font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent2); margin-bottom: 0.6rem;
+  }
+  .learn-card p { font-size: 0.87rem; color: #1a3a4a; line-height: 1.7; font-weight: 500; }
+
+  /* ── REFLECTION ── */
+  #reflection {
+    background: var(--dark); color: var(--white);
+    padding: clamp(4rem,8vw,6rem) clamp(1.5rem,8vw,6rem);
+  }
+  #reflection .section-label { color: #7dd4f0; }
+  #reflection .portfolio-heading { color: #a8d8b0; margin-bottom: 2.5rem; }
+  .reflection-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    gap: 1.5rem;
+  }
+  .reflection-card {
+    background: rgba(168,216,176,0.08); border: 1.5px solid rgba(168,216,176,0.25);
+    border-radius: var(--radius); padding: 1.8rem;
+  }
+  .reflection-card h3 {
+    font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.8rem;
+    color: #a8d8b0;
+  }
+  .reflection-card p { font-size: 0.9rem; color: #d4ecd8; line-height: 1.75; font-weight: 500; }
+  .reflection-highlight { color: #7dd4f0; font-weight: 700; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); border-top: 3px solid var(--accent);
+    padding: 2rem clamp(1.5rem,8vw,6rem);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.8rem; color: #a8d8b0;
+  }
+  footer span { font-family: var(--mono); font-weight: 500; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s, transform .5s; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── MISC ── */
+  .tag-list { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+  .tag {
+    background: var(--soft-blue); color: var(--accent2); border-radius: 100px;
+    padding: 0.25rem 0.75rem; font-size: 0.73rem; font-weight: 700;
+    border: 1.5px solid var(--accent2);
+  }
+  .sep { background: var(--mist); height: 2px; margin: 2rem 0; border-radius: 2px; }
+  .flow-diagram {
+    display: flex; align-items: center; flex-wrap: wrap; margin-top: 1rem; gap: 0;
+  }
+  .flow-step {
+    background: var(--white); border: 2px solid var(--accent); border-radius: var(--radius);
+    padding: 0.7rem 1rem; font-size: 0.83rem; font-weight: 600;
+    color: var(--dark); white-space: nowrap;
+  }
+  .flow-arrow { padding: 0 0.5rem; color: var(--accent); font-size: 1.3rem; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#ms-intro">About</a></li>
+    <li><a href="#portfolio">Projects</a></li>
+    <li><a href="#p1">01</a></li>
+    <li><a href="#p2">02</a></li>
+    <li><a href="#p3">03</a></li>
+    <li><a href="#p4">04</a></li>
+    <li><a href="#p5">05</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-eyebrow">Course Portfolio · Management Science</div>
+  <h1 class="hero-title">
+    Modelling decisions,<br/><em>optimizing</em> outcomes.
+  </h1>
+  <p class="hero-desc">
+    A collection of five projects from Management Science, demonstrating how quantitative
+    models and analytical frameworks support smarter real-world decisions.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span>Student</span>
+      <span>Warda Marriam</span>
+    </div>
+    <div class="hero-meta-item">
+      <span>Course</span>
+      <span>Management Science</span>
+    </div>
+    <div class="hero-meta-item">
+      <span>Instructor</span>
+      <span>Jaushua Dean</span>
+    </div>
+    <div class="hero-meta-item">
+      <span>Semester</span>
+      <span>Semester 5 · 2026</span>
+    </div>
+  </div>
+  <div class="hero-bg-number" aria-hidden="true">5</div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip reveal">
+  <div>
+    <h2>What this portfolio is</h2>
+    <p>Each project demonstrates a distinct concept from Management Science — not a file submission, but a clear explanation, an interactive tool built from real coursework, and a personal reflection on what I learned and how I'd apply it.</p>
+  </div>
+  <div>
+    <h2>How to navigate</h2>
+    <p>Scroll through the five project cards below, or jump to any project from the navigation bar. Each page follows the same structure: Overview → Demonstration → Evidence → What I Learned.</p>
+  </div>
+</div>
+
+<!-- MANAGEMENT SCIENCE INTRO -->
+<section id="ms-intro">
+  <span class="section-label reveal">About The Course</span>
+  <h2 class="reveal">What is Management Science?</h2>
+  <p class="ms-lead reveal">Management Science is the use of structured, quantitative thinking — models, data, and logical frameworks — to make better decisions under real-world constraints like budgets, time, and uncertainty. Instead of guessing or relying purely on intuition, it gives decision-makers a clear way to define their goal, identify their limits, and find the choice that performs best within those limits. This semester, every project in this portfolio applied that same core idea to a different kind of problem.</p>
+
+  <span class="section-label reveal" style="margin-top:0.5rem;">Concepts Learned This Semester</span>
+  <div class="concepts-grid">
+    <div class="concept-card reveal">
+      <div class="c-icon">🎯</div>
+      <h4>Binary Optimization</h4>
+      <p>Modelling "select it or don't" decisions using 0/1 variables, then maximizing an objective (like satisfaction or skill score) without breaking a budget constraint. Used in Projects 01 and 04.</p>
+    </div>
+    <div class="concept-card reveal">
+      <div class="c-icon">📐</div>
+      <h4>Model Components</h4>
+      <p>Breaking any decision problem into five parts: the Set (your options), Parameters (known values), Decision Variables (your choices), the Objective Function (what to maximize), and the Constraint (your limits).</p>
+    </div>
+    <div class="concept-card reveal">
+      <div class="c-icon">🌳</div>
+      <h4>Decision Trees</h4>
+      <p>Mapping out every possible decision, chance event, and outcome before acting — so that irreversible choices and their consequences are visible in advance. Used in Projects 02 and 05.</p>
+    </div>
+    <div class="concept-card reveal">
+      <div class="c-icon">📊</div>
+      <h4>Sensitivity Analysis</h4>
+      <p>Testing how a model's optimal solution changes when one input changes — like a budget, a cost, or a score — to understand how reliable and stable a decision really is.</p>
+    </div>
+    <div class="concept-card reveal">
+      <div class="c-icon">🔍</div>
+      <h4>Systems Thinking</h4>
+      <p>Looking beyond what's visible to identify the hidden, interconnected systems that keep something running — and asking what would break if one of those systems failed. Used in Project 03.</p>
+    </div>
+    <div class="concept-card reveal">
+      <div class="c-icon">⚖️</div>
+      <h4>Critical Evaluation of Tools</h4>
+      <p>Learning that every model — including decision trees and optimization — has limitations: oversimplification, data requirements, and sensitivity to small input errors. Knowing when to combine tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO INDEX -->
+<section id="portfolio">
+  <div class="section-label reveal">All Projects</div>
+  <h2 class="portfolio-heading reveal">Five course concepts</h2>
+  <p class="portfolio-sub reveal">Each card links directly to the full project page on this site.</p>
+  <div class="projects-grid">
+    <a class="project-card reveal" href="#p1">
+      <span class="card-num">PROJECT 01 · Activity</span>
+      <span class="card-title">The Pizza Optimizer 🍕</span>
+      <p class="card-desc">Choosing the best pizza toppings under a budget constraint — a hands-on introduction to binary decision variables, objective functions, and sensitivity analysis.</p>
+      <span class="card-tag">Budget Optimization</span>
+      <span class="card-arrow">View project →</span>
+    </a>
+    <a class="project-card reveal" href="#p2">
+      <span class="card-num">PROJECT 02 · Activity</span>
+      <span class="card-title">Decision Tree Construction 🌳</span>
+      <p class="card-desc">Mapping every possible kingdom choice in The Sleeping Dragon scenario — using a decision tree to think clearly under uncertainty before acting.</p>
+      <span class="card-tag">Decision Analysis</span>
+      <span class="card-arrow">View project →</span>
+    </a>
+    <a class="project-card reveal" href="#p3">
+      <span class="card-num">PROJECT 03 · Film Analysis</span>
+      <span class="card-title">Systems Thinking in Star Wars 🚀</span>
+      <p class="card-desc">Uncovering the hidden ship repair and logistics systems operating behind the asteroid chase scene in The Empire Strikes Back.</p>
+      <span class="card-tag">Systems Thinking</span>
+      <span class="card-arrow">View project →</span>
+    </a>
+    <a class="project-card reveal" href="#p4">
+      <span class="card-num">PROJECT 04 · Spreadsheet Model</span>
+      <span class="card-title">Workshop Schedule Optimizer 📅</span>
+      <p class="card-desc">Choosing the best intern training workshops under a 20-hour budget — a custom binary optimization model built in Google Sheets with full sensitivity analysis.</p>
+      <span class="card-tag">Binary Optimization</span>
+      <span class="card-arrow">View project →</span>
+    </a>
+    <a class="project-card reveal" href="#p5">
+      <span class="card-num">PROJECT 05 · Reading / Notes</span>
+      <span class="card-title">Decision Trees — Theory & Limitations 🌲</span>
+      <p class="card-desc">How decision trees apply in real business strategy and Management Science classrooms — plus their key limitations and open questions about uncertainty.</p>
+      <span class="card-tag">Decision Theory</span>
+      <span class="card-arrow">View project →</span>
+    </a>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════
+     PROJECT 01 — PIZZA OPTIMIZER
+═════════════════════════════════════ -->
+<section class="project-section" id="p1">
+  <div class="project-header reveal">
+    <div class="project-number-big" aria-hidden="true">01</div>
+    <div class="project-header-text">
+      <div class="section-label">Management Science · Budget Optimization</div>
+      <h2>The Pizza Optimizer 🍕</h2>
+      <p>Hands-on spreadsheet activity · Management Science</p>
+      <div class="tag-list"><span class="tag">Binary Variables</span><span class="tag">Objective Function</span><span class="tag">Constraints</span><span class="tag">Sensitivity Analysis</span></div>
+    </div>
+  </div>
+
+  <!-- 1. Overview -->
+  <div class="sub-section reveal">
+    <h3>Project Overview</h3>
+    <p>This activity introduced the core structure of a Management Science model through a fun but mathematically real problem: choosing the best pizza toppings under a 7.00ww budget. Each topping has a known cost and satisfaction score, and the goal is to select a combination that maximizes total satisfaction without exceeding the budget.</p>
+    <p>What makes this a proper management science problem is its structure. The toppings are the <strong>set</strong>, their costs and scores are <strong>parameters</strong>, whether each topping is selected is a <strong>binary decision variable</strong> (1 = yes, 0 = no), the sum of satisfaction scores is the <strong>objective function</strong> to maximize, and the budget is the <strong>constraint</strong>. I built a spreadsheet model to test combinations and then performed sensitivity analysis to understand how the optimal solution shifts when inputs change.</p>
+    <p>This matters because the same logic — maximize an outcome subject to constraints using structured variables — underlies real-world decisions in production scheduling, resource allocation, and supply chain planning.</p>
+  </div>
+
+  <!-- 2. Demo -->
+  <div class="sub-section reveal">
+    <h3>Demonstration — Interactive Pizza Optimizer</h3>
+    <p>Toggle toppings on or off and the tool calculates your total cost and satisfaction in real time. Try to beat the optimal score of 26.0 without going over 7.00ww!</p>
+    <div class="demo-box" id="pizza-demo">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.6rem;margin-bottom:1.2rem;" id="topping-grid"></div>
+      <div class="demo-output" id="pizza-output">Select toppings above…</div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <p style="font-size:0.82rem;color:var(--mid);margin-bottom:0.8rem;">Satisfaction score per woo (efficiency ratio) — all 10 toppings</p>
+      <div class="bar-chart" id="efficiency-bars"></div>
+    </div>
+  </div>
+
+  <!-- 3. Evidence -->
+  <div class="sub-section reveal">
+    <h3>Evidence</h3>
+    <p>Recreated spreadsheet data from the activity — all 10 toppings with cost, satisfaction score, and binary decision variable columns as modelled in Google Sheets.</p>
+    <table class="evidence-table">
+      <thead><tr><th>Topping</th><th>Unit Cost (ww)</th><th>Satisfaction Score</th><th>Score / ww</th><th>In Optimal? (x)</th></tr></thead>
+      <tbody>
+        <tr><td>Buffalo mozzarella</td><td>2.00</td><td>5.0</td><td>2.50</td><td>0</td></tr>
+        <tr><td>Gorgonzola</td><td>1.50</td><td>3.1</td><td>2.07</td><td>0</td></tr>
+        <tr><td>Ricotta</td><td>1.00</td><td>4.2</td><td>4.20</td><td>1 ✓</td></tr>
+        <tr><td>Burrata</td><td>3.00</td><td>4.7</td><td>1.57</td><td>0</td></tr>
+        <tr><td>Parma ham</td><td>3.00</td><td>7.2</td><td>2.40</td><td>0</td></tr>
+        <tr><td>Pancetta</td><td>2.00</td><td>4.2</td><td>2.10</td><td>0</td></tr>
+        <tr><td>Salame</td><td>2.00</td><td>8.3</td><td>4.15</td><td>1 ✓</td></tr>
+        <tr><td>'Nduja</td><td>0.50</td><td>4.8</td><td>9.60</td><td>1 ✓</td></tr>
+        <tr><td>Zucchini</td><td>1.00</td><td>3.5</td><td>3.50</td><td>1 ✓</td></tr>
+        <tr><td>Fried eggplant</td><td>2.00</td><td>5.2</td><td>2.60</td><td>1 ✓</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.9rem;font-size:0.85rem;color:var(--mid);"><strong>Optimal solution:</strong> Salame + 'Nduja + Ricotta + Zucchini + Fried eggplant → Total cost: 6.50ww · Total satisfaction: 26.0</p>
+    <p style="font-size:0.85rem;color:var(--mid);margin-top:0.4rem;"><strong>Second best:</strong> Gorgonzola + Ricotta + Salame + 'Nduja + Fried eggplant → Total cost: 7.00ww · Total satisfaction: 25.6</p>
+
+    <div class="sep"></div>
+    <p style="font-weight:600;font-size:0.9rem;margin-bottom:0.6rem;">Sensitivity Analysis Results</p>
+    <table class="evidence-table">
+      <thead><tr><th>Test</th><th>Finding</th></tr></thead>
+      <tbody>
+        <tr><td>Price Creep — Salame</td><td>Salame exits the optimal solution when its cost reaches 3.00ww (incremented by 0.25ww steps)</td></tr>
+        <tr><td>Score Tipping Point — Fried eggplant (in solution)</td><td>Gets dropped from optimal when satisfaction score falls to 3.5</td></tr>
+        <tr><td>Score Tipping Point — Buffalo mozzarella (not in solution)</td><td>Enters optimal solution when satisfaction score rises to 5.3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. Learn -->
+  <div class="sub-section reveal">
+    <h3>What Did I Learn?</h3>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <h4>Knowledge</h4>
+        <p>I learned to identify the five components of a management science model: set, parameters, decision variables, objective function, and constraint. The activity also showed that the highest-scoring topping (Salame at 8.3) is not always sufficient on its own — cost efficiency (score per woo) determines what actually belongs in the optimal solution.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Skills</h4>
+        <p>I built a spreadsheet model using binary variables (0/1) and SUMPRODUCT formulas to calculate the objective function and constraint simultaneously. I also practiced sensitivity analysis by systematically changing one input at a time to find tipping points — a skill directly applicable to any optimization problem.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Reflection</h4>
+        <p>The most surprising result was that 'Nduja — the cheapest topping at 0.50ww — had the highest score-per-woo ratio of 9.6, making it essential in both the optimal and second-best solutions. Modelling the problem quantitatively before deciding made this visible in a way that intuition alone never would have.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider" />
+
+<!-- ════════════════════════════════════
+     PROJECT 02 — DECISION TREE
+═════════════════════════════════════ -->
+<section class="project-section" id="p2">
+  <div class="project-header reveal">
+    <div class="project-number-big" aria-hidden="true">02</div>
+    <div class="project-header-text">
+      <div class="section-label">Management Science · Decision Analysis</div>
+      <h2>Decision Tree Construction 🌳</h2>
+      <p>Group activity · Scenario 2 — The Sleeping Dragon · Partner: Khadicha (2417758)</p>
+      <div class="tag-list"><span class="tag">Decision Tree</span><span class="tag">Uncertainty</span><span class="tag">Branching Logic</span><span class="tag">Scenario Analysis</span></div>
+    </div>
+  </div>
+
+  <!-- 1. Overview -->
+  <div class="sub-section reveal">
+    <h3>Project Overview</h3>
+    <p>A decision tree is a Management Science tool that maps out every possible choice and its consequences in a structured, visual way — branching from an initial decision node through chance events and further decisions until every outcome is captured. It forces decision-makers to think ahead before acting, rather than reacting to problems as they arise.</p>
+    <p>In this activity, Khadicha and I were given Scenario 2 — <em>The Sleeping Dragon</em>: a kingdom trapped in endless winter, with a sleeping dragon beneath the northern mountains. The legends are split — the dragon may be causing the winter, or it may be suppressing something far more dangerous underground. The king's council must decide what to do. We built a full decision tree across five levels mapping all major choices: investigate, attack, leave, or work with the dragon — and the downstream consequences of each.</p>
+    <p>Our recommended path was to <strong>investigate first</strong> — send explorers and mages, study ancient texts, speak with northern tribes, and discover why the dragon is sleeping before committing to any irreversible action. This avoids unnecessary danger and ensures the kingdom makes an informed decision rather than acting blindly.</p>
+  </div>
+
+  <!-- 2. Demo -->
+  <div class="sub-section reveal">
+    <h3>Demonstration — Interactive Decision Tree Explorer</h3>
+    <p>Click any decision node to expand the branch and explore the consequences at each level of the tree.</p>
+    <div class="demo-box" style="padding:1.5rem;">
+      <div id="dt-root"></div>
+    </div>
+  </div>
+
+  <!-- 3. Evidence -->
+  <div class="sub-section reveal">
+    <h3>Evidence</h3>
+    <p>Photo of our handwritten decision tree from the in-class activity, built across 5 levels of branching decisions and outcomes.</p>
+
+    <!-- Handwritten work photo displayed inline as a styled block -->
+    <div style="background:var(--ink);border-radius:var(--radius);padding:1rem;display:inline-block;margin-bottom:1.2rem;">
+      <div style="background:#d4c9a8;border-radius:4px;padding:1.5rem 2rem;font-family:var(--mono);font-size:0.72rem;color:#2a2a2a;line-height:2;max-width:600px;">
+        <div style="text-align:right;margin-bottom:0.5rem;font-size:0.65rem;color:#6b5d3f;">Scenario 2 — The Sleeping Dragon &nbsp;|&nbsp; Level 0 → Level 5</div>
+        <div><strong>Level 0:</strong> Investigate first ← [START HERE — recommended path]</div>
+        <div style="padding-left:1.2rem;"><strong>Level 1:</strong> Send explorers / Study ancient texts / Speak with tribes</div>
+        <div style="padding-left:2.4rem;"><strong>Level 2:</strong> Discover dragon is protecting kingdom → Work with dragon</div>
+        <div style="padding-left:2.4rem;"><strong>Level 2:</strong> Discover dragon causing winter → Decide: wake / seal</div>
+        <div style="padding-left:1.2rem;"><strong>Level 1:</strong> Attack the dragon</div>
+        <div style="padding-left:2.4rem;"><strong>Level 2:</strong> Dragon becomes enemy → Kingdom fights the dragon</div>
+        <div style="padding-left:3.6rem;"><strong>Level 3:</strong> Dragon explains → Use mages / find the cave</div>
+        <div style="padding-left:2.4rem;"><strong>Level 2:</strong> Dragon dies → Something worse awakens</div>
+        <div style="padding-left:1.2rem;"><strong>Level 1:</strong> Leave the dragon sleeping</div>
+        <div style="padding-left:2.4rem;"><strong>Level 2:</strong> Focus on surviving the winter / Real change begins</div>
+        <div style="padding-left:2.4rem;"><strong>Level 2:</strong> Seal protective barrier → Discover what's below</div>
+        <div style="padding-left:3.6rem;"><strong>Level 3–5:</strong> Civil war / People demand action / The creature tries to rise…</div>
+        <div style="margin-top:0.6rem;font-size:0.65rem;color:#6b5d3f;">📝 Handwritten group activity — Warda Marriam (2417471) &amp; Khadicha (2417758)</div>
+      </div>
+    </div>
+
+    <p style="margin-bottom:0.6rem;">Summary of the five major decision branches mapped in our tree:</p>
+    <table class="evidence-table">
+      <thead><tr><th>Level</th><th>Decision / Event</th><th>Branches</th><th>Consequence</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>Initial choice for the kingdom</td><td>Investigate · Attack · Leave</td><td>Sets all downstream outcomes</td></tr>
+        <tr><td>1</td><td>Investigate — gather information</td><td>Send explorers · Study texts · Speak with tribes</td><td>Kingdom learns the truth safely</td></tr>
+        <tr><td>2</td><td>What is discovered?</td><td>Dragon protects kingdom · Dragon causes winter</td><td>Determines next action</td></tr>
+        <tr><td>3</td><td>Attack the dragon</td><td>Dragon explains → use mages · Dragon dies → worse awakens</td><td>Risk of catastrophic outcome</td></tr>
+        <tr><td>4–5</td><td>Leave dragon sleeping</td><td>Survive winter · Seal barrier · Civil war starts</td><td>Instability without information</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.8rem;font-size:0.85rem;color:var(--mid);"><strong>Recommended path:</strong> Investigate → Work with dragon if protecting → Use mages to seal if causing harm. This path has no irreversible first step and preserves all options.</p>
+  </div>
+
+  <!-- 4. Learn -->
+  <div class="sub-section reveal">
+    <h3>What Did I Learn?</h3>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <h4>Knowledge</h4>
+        <p>A decision tree makes implicit reasoning explicit. By drawing every branch before deciding, we could see that attacking first closes off the "work with dragon" branch permanently — an irreversible move. Investigating first keeps all branches open. This taught me that in decision analysis, preserving optionality has real value.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Skills</h4>
+        <p>I practised structuring a complex, ambiguous problem into decision nodes, chance events, and outcomes — the same structure used in business decisions involving uncertainty. Building the tree collaboratively also required us to agree on what counted as a branch versus a sub-outcome, which sharpened my logical thinking.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Reflection</h4>
+        <p>The scenario was fictional, but the lesson was real: acting without information is almost always more costly than gathering it first. The "attack immediately" branch led to the worst outcomes in every sub-path we traced. I would apply this framework to any real decision involving uncertainty — from business strategy to personal choices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider" />
+
+<!-- ════════════════════════════════════
+     PROJECT 03 — SYSTEMS THINKING
+═════════════════════════════════════ -->
+<section class="project-section" id="p3">
+  <div class="project-header reveal">
+    <div class="project-number-big" aria-hidden="true">03</div>
+    <div class="project-header-text">
+      <div class="section-label">Management Science · Systems Thinking</div>
+      <h2>Systems Thinking in Star Wars 🚀</h2>
+      <p>Film analysis assignment · Star Wars Episode V: The Empire Strikes Back</p>
+      <div class="tag-list"><span class="tag">Systems Thinking</span><span class="tag">Logistics</span><span class="tag">Hidden Systems</span><span class="tag">Management Science</span></div>
+    </div>
+  </div>
+
+  <!-- 1. Overview -->
+  <div class="sub-section reveal">
+    <h3>Project Overview</h3>
+    <p>Systems thinking is a Management Science lens that looks beyond what is visible on the surface to identify the interconnected processes and systems that make something work. Rather than seeing isolated events, systems thinking asks: what are all the components, feedback loops, and dependencies keeping this running?</p>
+    <p>For this assignment, I watched <em>Star Wars Episode V: The Empire Strikes Back</em> and chose the <strong>asteroid chase scene</strong> featuring Han Solo and the Millennium Falcon. On the surface, it looks like a dramatic action sequence — but beneath it, a complex set of hidden systems is operating. The Empire's TIE fighters and Star Destroyers are chasing the Falcon through a dangerous asteroid field, the Falcon is suffering technical failures mid-chase, and every ship involved depends on systems that are never shown on screen but are absolutely essential for them to keep flying and fighting.</p>
+    <p>I identified the <strong>ship repair and ship management system</strong> as the hidden system in this scene. This includes navigation, communication, damage control, tracking, and warning systems — all of which connect to the broader lens of <strong>Logistics and Management Science</strong>.</p>
+  </div>
+
+  <!-- 2. Demo -->
+  <div class="sub-section reveal">
+    <h3>Demonstration — Hidden Systems Map</h3>
+    <p>Click each system component to reveal how it connects to the asteroid chase scene and why it matters.</p>
+    <div class="demo-box" id="st-demo">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem;" id="st-grid"></div>
+      <div class="demo-output" id="st-output" style="margin-top:1rem;">Select a system above to explore it.</div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <p style="font-size:0.82rem;color:var(--mid);margin-bottom:0.8rem;">Systems dependency map — how each hidden system connects in the scene</p>
+      <div class="flow-diagram" style="flex-wrap:wrap;gap:0.5rem;">
+        <div class="flow-step" style="background:#f0f4ff;border-color:var(--accent);">Navigation System</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Ship Tracking</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Communication</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Warning Systems</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step" style="background:#fef2f2;border-color:#dc2626;">Damage Control & Repair</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Evidence -->
+  <div class="sub-section reveal">
+    <h3>Evidence — Screenshots from the Film</h3>
+    <p>I watched the film and captured these screenshots as evidence of the scene and its visible/hidden systems at work. Each image corresponds to a different system I identified.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-bottom:1.5rem;">
+      <div style="background:var(--ink);border-radius:var(--radius);padding:0.6rem;">
+        <div style="background:#1a1a2e;height:110px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">🛸</div>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.72rem;margin-top:0.5rem;text-align:center;">Millennium Falcon cockpit — navigation system visible (screenshot from 8:14)</p>
+      </div>
+      <div style="background:var(--ink);border-radius:var(--radius);padding:0.6rem;">
+        <div style="background:#0d1b0d;height:110px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">🪨</div>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.72rem;margin-top:0.5rem;text-align:center;">Asteroid field — collision warning systems needed (screenshot 8:14)</p>
+      </div>
+      <div style="background:var(--ink);border-radius:var(--radius);padding:0.6rem;">
+        <div style="background:#1a0d00;height:110px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">👥</div>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.72rem;margin-top:0.5rem;text-align:center;">Crew managing ship systems under pressure (screenshot 8:13)</p>
+      </div>
+      <div style="background:var(--ink);border-radius:var(--radius);padding:0.6rem;">
+        <div style="background:#1a1a00;height:110px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">💥</div>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.72rem;margin-top:0.5rem;text-align:center;">TIE fighter explosion — damage management failure (screenshot 8:14)</p>
+      </div>
+    </div>
+
+    <p style="margin-bottom:0.6rem;">Analysis of hidden systems identified in the scene:</p>
+    <table class="evidence-table">
+      <thead><tr><th>Hidden System</th><th>What it does in the scene</th><th>Real-world equivalent</th><th>What breaks without it</th></tr></thead>
+      <tbody>
+        <tr><td>Ship Repair System</td><td>Keeps the Falcon flying despite hits; Chewie works on repairs mid-chase</td><td>Aircraft MRO (Maintenance, Repair & Overhaul)</td><td>Ship fails mid-chase — crew dies</td></tr>
+        <tr><td>Navigation System</td><td>Guides ships through the asteroid field without collision</td><td>GPS / route planning logistics</td><td>Ships crash into asteroids</td></tr>
+        <tr><td>Communication System</td><td>Empire coordinates TIE fighters and Star Destroyers during pursuit</td><td>Fleet management communications</td><td>No coordination — ships scatter</td></tr>
+        <tr><td>Ship Tracking System</td><td>Empire tracks the Falcon's position through the field</td><td>Real-time cargo/fleet tracking</td><td>Empire loses the Falcon</td></tr>
+        <tr><td>Warning / Collision System</td><td>Alerts crew to incoming asteroids in real time</td><td>Warehouse safety & alert systems</td><td>Ship destroyed by undetected asteroid</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. Learn -->
+  <div class="sub-section reveal">
+    <h3>What Did I Learn?</h3>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <h4>Knowledge</h4>
+        <p>Systems thinking taught me to look beyond what is immediately visible and ask: what must be running in the background for this to work? Every dramatic scene in the film — and every business operation in the real world — depends on invisible infrastructure. The asteroid chase would be impossible without at least five interconnected hidden systems operating simultaneously.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Skills</h4>
+        <p>I practised applying a Management Science lens to a non-business context, which actually made the concepts easier to see. Identifying systems, mapping their dependencies, and asking "what breaks without this?" are skills I can apply to supply chains, hospitals, manufacturing plants, or any complex operation.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Reflection</h4>
+        <p>The biggest insight was that even a simple chase scene needs many hidden systems working in the background simultaneously. This changed how I watch films and how I look at businesses — I now automatically ask: what are the systems behind what I'm seeing? That is exactly the mindset Management Science develops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider" />
+
+<!-- ════════════════════════════════════
+     PROJECT 04 — WORKSHOP SCHEDULE OPTIMIZER
+═════════════════════════════════════ -->
+<section class="project-section" id="p4">
+  <div class="project-header reveal">
+    <div class="project-number-big" aria-hidden="true">04</div>
+    <div class="project-header-text">
+      <div class="section-label">Management Science · Custom Optimization Problem</div>
+      <h2>Workshop Schedule Optimizer 📅</h2>
+      <p>Spreadsheet model · Google Sheets · Binary Linear Optimization</p>
+      <div class="tag-list"><span class="tag">Binary Variables</span><span class="tag">Objective Function</span><span class="tag">Constraint</span><span class="tag">Sensitivity Analysis</span></div>
+    </div>
+  </div>
+
+  <!-- 1. Overview -->
+  <div class="sub-section reveal">
+    <h3>Project Overview</h3>
+    <p>This is a custom optimization problem I designed and solved independently in Google Sheets. The scenario: a company needs to select the best training workshops for its interns, but is limited to a total of <strong>20 training hours</strong>. Each workshop has a fixed number of hours and a skill score. The goal is to select which workshops to include so that the total skill score is maximized without exceeding the hour budget.</p>
+    <p>This is structurally identical to the Pizza Optimizer (Project 01), but built from scratch on a custom scenario — proving that the same Management Science model structure (binary variables, objective function, constraint) applies across completely different real-world problems. The model was built with SUMPRODUCT formulas in Google Sheets, with decision variables as a 0/1 column that I manually toggled to find the optimal solution.</p>
+    <p>I also conducted a <strong>sensitivity analysis</strong> — increasing the hour budget from 20 to 25 hours to see how the optimal selection and skill score changed.</p>
+  </div>
+
+  <!-- 2. Demo -->
+  <div class="sub-section reveal">
+    <h3>Demonstration — Interactive Workshop Selector</h3>
+    <p>Toggle workshops on or off. The tool tracks your total hours against the 20-hour budget and your total skill score. Try to beat the optimal score of 78!</p>
+    <div class="demo-box">
+      <div style="margin-bottom:0.5rem;font-size:0.78rem;color:var(--mid);">Budget: <strong>20 hours</strong> · Objective: Maximize skill score</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0.6rem;margin-bottom:1.2rem;" id="ws-grid"></div>
+      <div class="demo-output" id="ws-output">Select workshops above…</div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <p style="font-size:0.82rem;color:var(--mid);margin-bottom:0.8rem;">Skill score per hour (efficiency ratio) — all 8 workshops</p>
+      <div class="bar-chart" id="ws-eff-bars"></div>
+    </div>
+  </div>
+
+  <!-- 3. Evidence -->
+  <div class="sub-section reveal">
+    <h3>Evidence — Recreated Spreadsheet</h3>
+    <p>Recreated from my Google Sheets model (screenshot at 7:55–7:56). All data, formulas, and results are from my actual coursework.</p>
+
+    <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.5rem;">Sheet 1 — Workshop Schedule Optimization (20-hour budget)</p>
+    <table class="evidence-table">
+      <thead><tr><th>Workshop</th><th>Hours (hᵢ)</th><th>Skill Score (sᵢ)</th><th>Selected xᵢ (0/1)</th><th>Score/Hr</th></tr></thead>
+      <tbody>
+        <tr><td>Excel Analytics</td><td>4</td><td>15</td><td>1 ✓</td><td>3.75</td></tr>
+        <tr><td>Public Speaking</td><td>3</td><td>12</td><td>1 ✓</td><td>4.00</td></tr>
+        <tr><td>Project Management</td><td>6</td><td>24</td><td>1 ✓</td><td>4.00</td></tr>
+        <tr><td>Leadership</td><td>5</td><td>18</td><td>0</td><td>3.60</td></tr>
+        <tr><td>Data Visualization</td><td>4</td><td>17</td><td>1 ✓</td><td>4.25</td></tr>
+        <tr><td>Negotiation Skills</td><td>3</td><td>10</td><td>1 ✓</td><td>3.33</td></tr>
+        <tr><td>AI Fundamentals</td><td>7</td><td>28</td><td>0</td><td>4.00</td></tr>
+        <tr><td>Time Management</td><td>2</td><td>8</td><td>0</td><td>4.00</td></tr>
+        <tr style="font-weight:600;background:var(--paper);"><td>TOTAL</td><td>20</td><td>78</td><td>5 workshops</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sep"></div>
+    <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.5rem;">Sheet 2 — Model Components (from spreadsheet)</p>
+    <div style="background:var(--white);border:1px solid var(--mist);border-radius:var(--radius);padding:1.2rem;font-size:0.82rem;line-height:2;font-family:var(--mono);">
+      <div><strong>Set:</strong> W = {Excel Analytics, Public Speaking, Project Management, Leadership, Data Visualization, Negotiation Skills, AI Fundamentals, Time Management}</div>
+      <div><strong>Parameters:</strong> hᵢ = training hours for workshop i &nbsp;|&nbsp; sᵢ = skill score for workshop i</div>
+      <div><strong>Decision Variables:</strong> xᵢ = 1 if workshop i selected, xᵢ = 0 if not</div>
+      <div><strong>Objective Function:</strong> Max Z = 15x₁ + 12x₂ + 24x₃ + 18x₄ + 17x₅ + 10x₆ + 28x₇ + 8x₈</div>
+      <div><strong>Constraint:</strong> 4x₁ + 3x₂ + 6x₃ + 5x₄ + 4x₅ + 3x₆ + 7x₇ + 2x₈ ≤ 20</div>
+      <div><strong>Binary Constraint:</strong> xᵢ ∈ {0,1} for all workshops i ∈ W</div>
+    </div>
+
+    <div class="sep"></div>
+    <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.5rem;">Sheet 3 — Sensitivity Analysis (budget increased to 25 hours)</p>
+    <table class="evidence-table">
+      <thead><tr><th></th><th>Base Model (20 hrs)</th><th>Sensitivity (25 hrs)</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>Total Hours Used</td><td>20</td><td>24</td><td>+4 hrs</td></tr>
+        <tr><td>Total Skill Score</td><td>78</td><td>96</td><td>+18 points</td></tr>
+        <tr><td>Workshops Selected</td><td>Excel Analytics, Public Speaking, Project Management, Data Visualization, Negotiation Skills</td><td>Excel Analytics, Public Speaking, Project Management, Data Visualization, AI Fundamentals</td><td>AI Fundamentals replaces Negotiation Skills</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.85rem;color:var(--mid);margin-top:0.6rem;">Increasing available training time by 5 hours raised the total skill score by 18 points — demonstrating that additional training capacity can significantly improve intern skill development.</p>
+
+    <div class="sep"></div>
+    <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.5rem;">Final Conclusion (from spreadsheet)</p>
+    <div style="background:var(--paper);border-left:3px solid var(--accent);padding:1rem 1.2rem;font-size:0.85rem;line-height:1.75;border-radius:0 var(--radius) var(--radius) 0;">
+      The objective was to maximize the total skill score while keeping total training hours at or below 20 hours. Using a binary linear optimization model, the optimal solution was to select Excel Analytics, Public Speaking, Project Management, Data Visualization, and Negotiation Skills. The total training hours used were 20 and the total skill score achieved was 78. Increasing the budget to 25 hours produced a new optimal schedule (Excel Analytics, Public Speaking, Project Management, Data Visualization, AI Fundamentals) using 24 hours with a skill score of 96.
+    </div>
+  </div>
+
+  <!-- 4. Learn -->
+  <div class="sub-section reveal">
+    <h3>What Did I Learn?</h3>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <h4>Knowledge</h4>
+        <p>I learned that the same binary optimization structure from the Pizza Optimizer applies to completely different real-world problems. AI Fundamentals had the highest raw skill score (28) but was excluded in the base model because its 7-hour cost was too high given the budget — score-per-hour efficiency determines the optimal selection, not raw score alone.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Skills</h4>
+        <p>I designed this model entirely from scratch — creating the scenario, defining the data, writing the SUMPRODUCT formulas, and building the sensitivity analysis in a separate sheet. This was the first time I built a full Management Science model independently without a template.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Reflection</h4>
+        <p>The sensitivity analysis was the most interesting part. Adding just 5 more hours shifted the optimal solution — AI Fundamentals entered and Negotiation Skills dropped out. This shows that resource constraints don't just limit outcomes, they reshape which choices are optimal entirely. The same principle applies to budgets, staffing, and any constrained resource in business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider" />
+
+<!-- ════════════════════════════════════
+     PROJECT 05 — DECISION TREES THEORY
+═════════════════════════════════════ -->
+<section class="project-section" id="p5">
+  <div class="project-header reveal">
+    <div class="project-number-big" aria-hidden="true">05</div>
+    <div class="project-header-text">
+      <div class="section-label">Management Science · Reading / Notes</div>
+      <h2>Decision Trees — Theory & Limitations 🌲</h2>
+      <p>Cornell-style notes · Reading-based project</p>
+      <div class="tag-list"><span class="tag">Decision Theory</span><span class="tag">Uncertainty</span><span class="tag">Limitations</span><span class="tag">Real-World Application</span></div>
+    </div>
+  </div>
+
+  <!-- 1. Overview -->
+  <div class="sub-section reveal">
+    <h3>Project Overview</h3>
+    <p>This project is based on a reading and note-taking exercise focused on decision trees as a theoretical tool in Management Science. While Project 02 involved building a decision tree by hand for a specific scenario, this project goes deeper into the conceptual side: how decision trees work as a general method, where they are used in the real world, and — critically — where they fall short.</p>
+    <p>My notes follow a Cornell format with three layers: the <strong>top</strong> addresses real-world and classroom application, the <strong>middle</strong> addresses limitations of decision trees for decision-making, and the <strong>bottom</strong> captures my own questions and points of confusion after reading. This structure builds not just knowledge but critical thinking — asking what a tool cannot do is just as important as knowing what it can.</p>
+    <p>Decision trees are used across industries — from finance (should we invest?) to medicine (which treatment?) to management strategy (should we expand?) — because they make complex, branching decisions visible and comparable before any action is taken.</p>
+  </div>
+
+  <!-- 2. Demo -->
+  <div class="sub-section reveal">
+    <h3>Demonstration — Decision Tree Concept Explorer</h3>
+    <p>Click each concept card to see the full explanation, a real-world example, and how it connects to Management Science.</p>
+    <div class="demo-box">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.7rem;margin-bottom:1rem;" id="dt-theory-grid"></div>
+      <div class="demo-output" id="dt-theory-output">Select a concept above to explore it.</div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <p style="font-size:0.82rem;color:var(--mid);margin-bottom:0.8rem;">Reliability of decision tree outputs — factors that affect accuracy</p>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <span class="bar-label" style="font-size:0.72rem;">Data quality</span>
+          <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+          <span class="bar-value">High impact</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="font-size:0.72rem;">Probability accuracy</span>
+          <div class="bar-track"><div class="bar-fill" style="width:85%;background:#f59e0b"></div></div>
+          <span class="bar-value">High impact</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="font-size:0.72rem;">Outcome completeness</span>
+          <div class="bar-track"><div class="bar-fill" style="width:70%;background:#f59e0b"></div></div>
+          <span class="bar-value">Med impact</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="font-size:0.72rem;">Model simplification</span>
+          <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--accent2)"></div></div>
+          <span class="bar-value">Med impact</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Evidence -->
+  <div class="sub-section reveal">
+    <h3>Evidence — Cornell-Style Notes</h3>
+    <p>Recreated from my reading notes, following the Cornell format used for this assignment.</p>
+
+    <div style="border:1.5px solid var(--mist);border-radius:var(--radius);overflow:hidden;font-size:0.85rem;">
+      <!-- Header -->
+      <div style="background:var(--ink);color:var(--white);padding:0.7rem 1.2rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;">
+        CORNELL NOTES · DECISION TREES · WARDA MARRIAM 2417471 · MANAGEMENT SCIENCE
+      </div>
+      <!-- Topic row -->
+      <div style="background:#f0f4ff;padding:0.6rem 1.2rem;border-bottom:1px solid var(--mist);">
+        <strong>Topic:</strong> Decision Trees — How does it apply in the real world and within a Management Science classroom?
+      </div>
+      <!-- Main notes -->
+      <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--mist);">
+        <div style="background:var(--paper);padding:1rem;border-right:1px solid var(--mist);font-weight:600;font-size:0.78rem;color:var(--mid);">
+          TOP<br/>Real-World &amp; Classroom Application
+        </div>
+        <div style="padding:1rem;line-height:1.75;">
+          Used by companies to choose the best strategy in uncertain situations. In the classroom, it trains students to break problems into clear steps and evaluate outcomes systematically before committing to a path.
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--mist);">
+        <div style="background:var(--paper);padding:1rem;border-right:1px solid var(--mist);font-weight:600;font-size:0.78rem;color:var(--mid);">
+          MID<br/>Limitations
+        </div>
+        <div style="padding:1rem;line-height:1.75;">
+          Can oversimplify real situations. Needs a lot of accurate data. Small errors in inputs (probabilities, payoffs) can significantly change results and lead to wrong decisions.
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 1fr;">
+        <div style="background:var(--paper);padding:1rem;border-right:1px solid var(--mist);font-weight:600;font-size:0.78rem;color:var(--mid);">
+          BOTTOM<br/>My Questions
+        </div>
+        <div style="padding:1rem;line-height:1.75;">
+          <ul style="margin-left:1.2rem;">
+            <li>Are there better tools for handling uncertainty?</li>
+            <li>How reliable are the results in practice?</li>
+            <li>Can decision trees be combined with other methods?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+    <p style="margin-bottom:0.6rem;">Comparison — decision trees vs alternative tools for uncertainty:</p>
+    <table class="evidence-table">
+      <thead><tr><th>Tool</th><th>Best For</th><th>Advantage over Decision Trees</th><th>Limitation</th></tr></thead>
+      <tbody>
+        <tr><td>Decision Tree</td><td>Structured, sequential decisions</td><td>Visual, easy to explain, good for discrete choices</td><td>Oversimplifies, sensitive to input errors</td></tr>
+        <tr><td>Monte Carlo Simulation</td><td>High uncertainty with many variables</td><td>Models thousands of scenarios at once</td><td>Requires software, harder to explain</td></tr>
+        <tr><td>Sensitivity Analysis</td><td>Testing how inputs change outcomes</td><td>Identifies which inputs matter most</td><td>Doesn't find optimal solution by itself</td></tr>
+        <tr><td>Decision Matrix</td><td>Multi-criteria decisions without probabilities</td><td>Simple, fast, no probability data needed</td><td>Can't model sequential decisions</td></tr>
+        <tr><td>Combined approach</td><td>Complex real-world problems</td><td>Uses each tool's strength, covers weaknesses</td><td>More complex to build and explain</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. Learn -->
+  <div class="sub-section reveal">
+    <h3>What Did I Learn?</h3>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <h4>Knowledge</h4>
+        <p>Decision trees are powerful for structured, sequential decisions under uncertainty — but their reliability depends entirely on the quality of input data and probabilities. A small change in an estimated probability can flip the optimal decision completely. This is why sensitivity analysis (Project 04) is so important alongside any optimization model.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Skills</h4>
+        <p>This reading project developed my ability to critically evaluate a tool rather than just use it. I practised Cornell note-taking as a structured reading method, and then extended my thinking by researching alternatives and comparing their strengths and limitations — a skill directly useful for any evidence-based decision in business.</p>
+      </div>
+      <div class="learn-card">
+        <h4>Reflection</h4>
+        <p>My biggest question going in was: can decision trees be combined with other methods? The answer is yes — sensitivity analysis can test the robustness of a tree's outputs, and simulation can fill gaps where probabilities are uncertain. This portfolio itself is a demonstration: Projects 01, 02, and 04 use optimization; Projects 02 and 05 use decision trees; Project 03 uses systems thinking. Real management science combines all of them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════
+     FINAL REFLECTION
+═════════════════════════════════════ -->
+<section id="reflection">
+  <div class="section-label">Semester Reflection</div>
+  <h2 class="portfolio-heading">Looking back at five projects</h2>
+  <div class="reflection-grid">
+    <div class="reflection-card reveal">
+      <h3>Most Interesting</h3>
+      <p>The <span class="reflection-highlight">Systems Thinking in Star Wars</span> project was the most surprising. I never expected that watching a film chase scene could reveal five completely invisible but essential systems. It changed how I look at everything — I now automatically ask "what hidden systems are keeping this running?" in any situation.</p>
+    </div>
+    <div class="reflection-card reveal">
+      <h3>Most Challenging</h3>
+      <p>The <span class="reflection-highlight">Workshop Schedule Optimizer</span> (Project 04) was the most technically challenging because I had to design the entire model from scratch — scenario, data, formulas, and sensitivity analysis — without a template. Getting the SUMPRODUCT formulas right and interpreting the sensitivity results took the most effort.</p>
+    </div>
+    <div class="reflection-card reveal">
+      <h3>Most Valuable</h3>
+      <p>The <span class="reflection-highlight">Pizza Optimizer</span> (Project 01) was the most valuable because it introduced the entire structure of a Management Science model — set, parameters, binary variables, objective function, constraint — which then appeared in every project after it. It was the foundation for everything else.</p>
+    </div>
+    <div class="reflection-card reveal">
+      <h3>How My Understanding Changed</h3>
+      <p>I came in thinking Management Science was about maths and formulas. I leave understanding it as a <span class="reflection-highlight">structured way of thinking</span> — breaking any problem into decisions, constraints, and objectives, then finding the best path. That mindset applies far beyond the classroom, in every real decision involving limited resources.</p>
+    </div>
+    <div class="reflection-card reveal">
+      <h3>Skills Developed</h3>
+      <p>Binary optimization modelling in Google Sheets; decision tree construction; systems thinking; sensitivity analysis; Cornell note-taking; critical evaluation of tools and their limitations. Most importantly: the habit of asking <span class="reflection-highlight">"what is the constraint, and what am I trying to maximize?"</span> before making any decision.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Warda Marriam · Management Science Portfolio · Semester 5, 2026 · Instructor: Jaushua Dean</span>
+  <span>Built entirely in HTML — no external files required</span>
+</footer>
+
+<script>
+// ── PIZZA OPTIMIZER ──
+const toppings = [
+  {name:"Buffalo mozzarella", cost:2.00, score:5.0},
+  {name:"Gorgonzola",         cost:1.50, score:3.1},
+  {name:"Ricotta",            cost:1.00, score:4.2},
+  {name:"Burrata",            cost:3.00, score:4.7},
+  {name:"Parma ham",          cost:3.00, score:7.2},
+  {name:"Pancetta",           cost:2.00, score:4.2},
+  {name:"Salame",             cost:2.00, score:8.3},
+  {name:"'Nduja",             cost:0.50, score:4.8},
+  {name:"Zucchini",           cost:1.00, score:3.5},
+  {name:"Fried eggplant",     cost:2.00, score:5.2},
+];
+const BUDGET = 7.00;
+const selected = new Array(toppings.length).fill(false);
+
+function buildPizzaDemo() {
+  const grid = document.getElementById('topping-grid');
+  toppings.forEach((t,i) => {
+    const btn = document.createElement('button');
+    btn.id = 'tp-'+i;
+    btn.style.cssText = `background:var(--paper);border:1.5px solid var(--mist);border-radius:var(--radius);
+      padding:0.55rem 0.8rem;cursor:pointer;font-family:var(--sans);font-size:0.8rem;
+      text-align:left;transition:all .15s;`;
+    btn.innerHTML = `<span style="display:block;font-weight:600;">${t.name}</span>
+      <span style="color:var(--mid);font-size:0.72rem;">${t.cost.toFixed(2)}ww · ★${t.score}</span>`;
+    btn.onclick = () => toggleTopping(i);
+    grid.appendChild(btn);
+  });
+  updatePizzaOutput();
+  buildEfficiencyBars();
+}
+
+function toggleTopping(i) {
+  selected[i] = !selected[i];
+  const btn = document.getElementById('tp-'+i);
+  btn.style.background   = selected[i] ? 'var(--accent)' : 'var(--paper)';
+  btn.style.borderColor  = selected[i] ? 'var(--accent)' : 'var(--mist)';
+  btn.style.color        = selected[i] ? '#fff' : 'var(--ink)';
+  btn.querySelectorAll('span')[1].style.color = selected[i] ? 'rgba(255,255,255,0.75)' : 'var(--mid)';
+  updatePizzaOutput();
+}
+
+function updatePizzaOutput() {
+  let cost=0, score=0, names=[];
+  selected.forEach((s,i)=>{ if(s){ cost+=toppings[i].cost; score+=toppings[i].score; names.push(toppings[i].name); } });
+  const over = cost > BUDGET;
+  const pct  = Math.min(cost/BUDGET*100,100);
+  const barColor = over?'#c0392b': cost/BUDGET>0.85?'#f59e0b':'var(--accent)';
+  document.getElementById('pizza-output').innerHTML =
+    `<div style="margin-bottom:0.5rem;">
+       <strong>Selected:</strong> ${names.length?names.join(', '):'None yet'}
+     </div>
+     <div style="display:flex;gap:2rem;margin-bottom:0.6rem;">
+       <span><strong>Total Cost:</strong> <span style="color:${over?'#c0392b':'inherit'}">${cost.toFixed(2)}ww / 7.00ww</span></span>
+       <span><strong>Satisfaction:</strong> ${score.toFixed(1)}</span>
+     </div>
+     <div style="background:var(--mist);border-radius:100px;height:8px;margin-bottom:0.4rem;">
+       <div style="width:${pct}%;height:100%;border-radius:100px;background:${barColor};transition:width .3s;"></div>
+     </div>
+     <span style="font-size:0.75rem;color:var(--mid);">${over?'⚠ Over budget! Remove a topping.': cost===0?'Budget used: 0.00ww':'Budget used: '+cost.toFixed(2)+'ww · '+( BUDGET-cost).toFixed(2)+'ww remaining'}</span>
+     ${score>=26.0&&!over?'<div style="margin-top:0.6rem;color:var(--accent);font-weight:600;">🎉 Optimal solution reached!</div>':''}`;
+}
+
+function buildEfficiencyBars() {
+  const sorted = [...toppings].map((t,i)=>({...t,i,eff:t.score/t.cost})).sort((a,b)=>b.eff-a.eff);
+  const max = sorted[0].eff;
+  let html='';
+  sorted.forEach(t=>{
+    const w = (t.eff/max*100).toFixed(0);
+    html+=`<div class="bar-row">
+      <span class="bar-label" style="font-size:0.72rem;">${t.name}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${w}%"></div></div>
+      <span class="bar-value">${t.eff.toFixed(1)}</span>
+    </div>`;
+  });
+  document.getElementById('efficiency-bars').innerHTML=html;
+}
+buildPizzaDemo();
+
+// ── DECISION TREE EXPLORER ──
+const dtData = {
+  label: "🏰 Kingdom Decision", type:"decision", recommended: true,
+  children: [
+    {
+      label: "🔍 Investigate First", type:"decision", recommended: true,
+      note: "✅ Recommended path — preserves all options",
+      children: [
+        { label: "Send explorers & mages to the mountains", type:"chance",
+          children: [
+            { label: "🐉 Dragon is protecting the kingdom", type:"outcome", outcome:"Work WITH the dragon — winter ends safely", good:true },
+            { label: "🌨 Dragon is causing the winter", type:"decision",
+              children: [
+                { label: "Use mages to wake dragon carefully", type:"outcome", outcome:"Dragon wakes, winter lifts, kingdom survives", good:true },
+                { label: "Seal the dragon underground", type:"outcome", outcome:"Temporary fix — underlying threat contained", good:true }
+              ]
+            }
+          ]
+        },
+        { label: "Study ancient texts & speak with northern tribes", type:"outcome", outcome:"Kingdom gains knowledge — reduces uncertainty before acting", good:true }
+      ]
+    },
+    {
+      label: "⚔️ Attack the Dragon", type:"decision", recommended: false,
+      note: "⚠️ High risk — closes off cooperation path permanently",
+      children: [
+        { label: "Dragon survives & becomes enemy", type:"chance",
+          children: [
+            { label: "Dragon explains its purpose", type:"decision",
+              children: [
+                { label: "Use mages to find the cave", type:"outcome", outcome:"Dragon helps — crisis averted but trust is broken", good:false },
+                { label: "Attack the cave", type:"outcome", outcome:"Something worse awakens beneath the earth", good:false }
+              ]
+            },
+            { label: "Kingdom fights the dragon", type:"outcome", outcome:"Massive casualties — kingdom weakened", good:false }
+          ]
+        },
+        { label: "Dragon is killed", type:"outcome", outcome:"💀 Something far worse awakens beneath the earth — catastrophic outcome", good:false }
+      ]
+    },
+    {
+      label: "😴 Leave the Dragon Sleeping", type:"decision", recommended: false,
+      note: "⚠️ Inaction — instability grows over time",
+      children: [
+        { label: "Focus on surviving the winter", type:"chance",
+          children: [
+            { label: "Real change begins naturally", type:"outcome", outcome:"Slow improvement — uncertain timeline", good:false },
+            { label: "People demand action", type:"decision",
+              children: [
+                { label: "Civil war starts within the kingdom", type:"outcome", outcome:"Internal collapse — dragon problem unsolved", good:false },
+                { label: "Seal protective barrier", type:"decision",
+                  children: [
+                    { label: "Discover what lies below", type:"outcome", outcome:"New threat identified — but kingdom is weakened", good:false },
+                    { label: "The creature tries to rise", type:"outcome", outcome:"Existential threat — kingdom unprepared", good:false }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+function buildDT(node, container, depth=0) {
+  const wrap = document.createElement('div');
+  wrap.style.cssText = `margin-left:${depth*18}px;margin-bottom:6px;`;
+
+  const isLeaf = !node.children || node.children.length===0;
+  const colors = { decision:'var(--accent)', chance:'#f59e0b', outcome: node.good?'#16a34a':'#dc2626' };
+  const icons  = { decision:'◆', chance:'●', outcome:'▶' };
+
+  const btn = document.createElement('div');
+  btn.style.cssText = `display:inline-flex;align-items:center;gap:6px;cursor:${isLeaf?'default':'pointer'};
+    background:var(--white);border:1.5px solid ${colors[node.type]||'var(--mist)'};
+    border-radius:var(--radius);padding:5px 10px;font-size:0.78rem;
+    color:var(--ink);margin-bottom:2px;max-width:520px;
+    ${node.recommended&&depth===1?'border-width:2px;font-weight:600;':''}
+    ${node.type==='outcome'?(node.good?'background:#f0fdf4':'background:#fef2f2'):''}`;
+  btn.innerHTML = `<span style="color:${colors[node.type]};font-size:0.65rem;">${icons[node.type]||'◆'}</span>
+    <span>${node.label}</span>
+    ${node.note?`<span style="font-size:0.65rem;color:var(--mid);margin-left:4px;">${node.note}</span>`:''}
+    ${node.outcome?`<span style="font-size:0.7rem;color:${node.good?'#16a34a':'#dc2626'};margin-left:6px;font-style:italic;">→ ${node.outcome}</span>`:''}
+    ${!isLeaf?'<span style="margin-left:auto;font-size:0.65rem;color:var(--mid);">▾</span>':''}`;
+
+  const childWrap = document.createElement('div');
+  childWrap.style.display = depth < 1 ? 'block' : 'none';
+
+  if (!isLeaf) {
+    btn.onclick = () => {
+      const open = childWrap.style.display !== 'none';
+      childWrap.style.display = open ? 'none' : 'block';
+      btn.querySelector('span:last-child').textContent = open ? '▾' : '▴';
+    };
+    node.children.forEach(c => buildDT(c, childWrap, depth+1));
+  }
+
+  wrap.appendChild(btn);
+  wrap.appendChild(childWrap);
+  container.appendChild(wrap);
+}
+
+const dtRoot = document.getElementById('dt-root');
+if(dtRoot) {
+  const legend = document.createElement('div');
+  legend.style.cssText='display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;font-size:0.72rem;';
+  legend.innerHTML=`<span><span style="color:var(--accent)">◆</span> Decision node (you choose)</span>
+    <span><span style="color:#f59e0b">●</span> Chance event (uncertainty)</span>
+    <span><span style="color:#16a34a">▶</span> Good outcome</span>
+    <span><span style="color:#dc2626">▶</span> Bad outcome</span>
+    <span style="color:var(--mid);">Click any node to expand/collapse branches</span>`;
+  dtRoot.appendChild(legend);
+  buildDT(dtData, dtRoot, 0);
+}
+
+// ── SYSTEMS THINKING DEMO ──
+const stSystems = [
+  { icon:'🧭', name:'Navigation System', color:'#2a7fa8',
+    scene:'In the asteroid chase, Han Solo must navigate the Falcon through thousands of fast-moving rocks at high speed. The navigation system processes position, speed, and obstacle data in real time.',
+    realWorld:'Equivalent to GPS routing and fleet management systems used in logistics — directing trucks, ships, and aircraft through complex routes.',
+    withoutIt:'The Falcon crashes into an asteroid within seconds. Without navigation, high-speed movement through a dense field is impossible.' },
+  { icon:'🔧', name:'Ship Repair System', color:'#dc2626',
+    scene:'Chewbacca repairs the Falcon mid-flight after asteroid impacts. This includes damage detection, spare parts access, prioritized repairs, and crew coordination — all during an active chase.',
+    realWorld:'Equivalent to aircraft MRO (Maintenance, Repair & Overhaul) systems — managing parts inventory, repair priority queues, and technician dispatch.',
+    withoutIt:'The Falcon fails mid-chase. A single unrepaired system failure (engines, shields, steering) ends the escape.' },
+  { icon:'📡', name:'Communication System', color:'#b45309',
+    scene:'The Empire coordinates multiple Star Destroyers and TIE fighter squadrons simultaneously. Without communication, the pursuit collapses into uncoordinated individual actions.',
+    realWorld:'Equivalent to fleet communication networks used in shipping, aviation, and military logistics to coordinate multiple vehicles in real time.',
+    withoutIt:'TIE fighters collide with each other; Star Destroyers block their own fighters. Coordination breaks down completely.' },
+  { icon:'📍', name:'Ship Tracking System', color:'#15803d',
+    scene:'The Empire tracks the Falcon\'s position through the asteroid field at all times. This requires sensors that work through electromagnetic interference from the asteroids.',
+    realWorld:'Equivalent to real-time cargo tracking (AIS for ships, ADS-B for aircraft, GPS for trucks) — always knowing where your asset is.',
+    withoutIt:'The Empire loses the Falcon entirely. No tracking = no pursuit = failed mission.' },
+  { icon:'⚠️', name:'Warning & Alert System', color:'#7c3aed',
+    scene:'Both the Falcon and Empire ships need collision warnings for incoming asteroids. At the speeds involved, human reaction time alone is insufficient — automated alerts are essential.',
+    realWorld:'Equivalent to warehouse safety systems, collision avoidance in autonomous vehicles, and SCADA alert systems in manufacturing.',
+    withoutIt:'Ships destroyed by undetected asteroids. Even the best pilot cannot react fast enough without advance warning.' },
+];
+
+let stSelected = null;
+function buildSTDemo() {
+  const grid = document.getElementById('st-grid');
+  if(!grid) return;
+  stSystems.forEach((s,i) => {
+    const btn = document.createElement('div');
+    btn.id = 'st-btn-'+i;
+    btn.style.cssText = `background:var(--white);border:1.5px solid var(--mist);border-radius:var(--radius);
+      padding:0.8rem 1rem;cursor:pointer;transition:all .15s;`;
+    btn.innerHTML = `<div style="font-size:1.4rem;margin-bottom:0.3rem;">${s.icon}</div>
+      <div style="font-size:0.8rem;font-weight:600;">${s.name}</div>`;
+    btn.onclick = () => selectST(i);
+    grid.appendChild(btn);
+  });
+}
+function selectST(i) {
+  stSelected = i;
+  stSystems.forEach((_,j) => {
+    const b = document.getElementById('st-btn-'+j);
+    b.style.borderColor = j===i ? stSystems[j].color : 'var(--mist)';
+    b.style.background  = j===i ? stSystems[j].color+'18' : 'var(--white)';
+  });
+  const s = stSystems[i];
+  document.getElementById('st-output').innerHTML =
+    `<strong style="color:${s.color};">${s.icon} ${s.name}</strong><br/><br/>
+     <strong>In the scene:</strong> ${s.scene}<br/><br/>
+     <strong>Real-world equivalent:</strong> ${s.realWorld}<br/><br/>
+     <strong>Without it:</strong> <span style="color:#dc2626;">${s.withoutIt}</span>`;
+}
+buildSTDemo();
+
+// ── WORKSHOP SELECTOR ──
+const wsData = [
+  {name:'Excel Analytics',    hours:4, score:15},
+  {name:'Public Speaking',    hours:3, score:12},
+  {name:'Project Management', hours:6, score:24},
+  {name:'Leadership',         hours:5, score:18},
+  {name:'Data Visualization', hours:4, score:17},
+  {name:'Negotiation Skills', hours:3, score:10},
+  {name:'AI Fundamentals',    hours:7, score:28},
+  {name:'Time Management',    hours:2, score: 8},
+];
+const WS_BUDGET = 20;
+const wsSelected = new Array(wsData.length).fill(false);
+
+function buildWSDemo() {
+  const grid = document.getElementById('ws-grid');
+  if(!grid) return;
+  wsData.forEach((w,i) => {
+    const btn = document.createElement('button');
+    btn.id = 'ws-btn-'+i;
+    btn.style.cssText = `background:var(--paper);border:1.5px solid var(--mist);border-radius:var(--radius);
+      padding:0.55rem 0.8rem;cursor:pointer;font-family:var(--sans);font-size:0.8rem;
+      text-align:left;transition:all .15s;`;
+    btn.innerHTML = `<span style="display:block;font-weight:600;">${w.name}</span>
+      <span style="color:var(--mid);font-size:0.72rem;">${w.hours}h · Score: ${w.score}</span>`;
+    btn.onclick = () => toggleWS(i);
+    grid.appendChild(btn);
+  });
+  buildWSEffBars();
+  updateWSOutput();
+}
+function toggleWS(i) {
+  wsSelected[i] = !wsSelected[i];
+  const btn = document.getElementById('ws-btn-'+i);
+  btn.style.background  = wsSelected[i] ? 'var(--accent)' : 'var(--paper)';
+  btn.style.borderColor = wsSelected[i] ? 'var(--accent)' : 'var(--mist)';
+  btn.style.color       = wsSelected[i] ? '#fff' : 'var(--ink)';
+  btn.querySelectorAll('span')[1].style.color = wsSelected[i] ? 'rgba(255,255,255,0.75)' : 'var(--mid)';
+  updateWSOutput();
+}
+function updateWSOutput() {
+  let hrs=0, score=0, names=[];
+  wsSelected.forEach((s,i)=>{ if(s){ hrs+=wsData[i].hours; score+=wsData[i].score; names.push(wsData[i].name); }});
+  const over = hrs > WS_BUDGET;
+  const pct  = Math.min(hrs/WS_BUDGET*100, 100);
+  const barCol = over ? '#c0392b' : hrs/WS_BUDGET > 0.85 ? '#f59e0b' : 'var(--accent)';
+  document.getElementById('ws-output').innerHTML =
+    `<div style="margin-bottom:0.5rem;"><strong>Selected:</strong> ${names.length ? names.join(', ') : 'None yet'}</div>
+     <div style="display:flex;gap:2rem;margin-bottom:0.6rem;flex-wrap:wrap;">
+       <span><strong>Total Hours:</strong> <span style="color:${over?'#c0392b':'inherit'}">${hrs} / ${WS_BUDGET}h</span></span>
+       <span><strong>Skill Score:</strong> ${score}</span>
+     </div>
+     <div style="background:var(--mist);border-radius:100px;height:8px;margin-bottom:0.4rem;">
+       <div style="width:${pct}%;height:100%;border-radius:100px;background:${barCol};transition:width .3s;"></div>
+     </div>
+     <span style="font-size:0.75rem;color:var(--mid);">${over ? '⚠ Over budget! Remove a workshop.' : hrs===0 ? 'Hours used: 0' : (WS_BUDGET-hrs)+' hours remaining'}</span>
+     ${score>=78&&!over ? '<div style="margin-top:0.6rem;color:var(--accent);font-weight:600;">🎉 Optimal solution reached! Score = 78</div>' : ''}
+     ${score>=96&&!over ? '<div style="color:#b45309;font-weight:600;">⭐ Sensitivity Analysis optimal (25h budget)! Score = 96</div>' : ''}`;
+}
+function buildWSEffBars() {
+  const sorted = [...wsData].map((w,i)=>({...w,i,eff:+(w.score/w.hours).toFixed(2)})).sort((a,b)=>b.eff-a.eff);
+  const max = sorted[0].eff;
+  let html='';
+  sorted.forEach(w=>{
+    const width=(w.eff/max*100).toFixed(0);
+    html+=`<div class="bar-row">
+      <span class="bar-label" style="font-size:0.72rem;">${w.name}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${width}%"></div></div>
+      <span class="bar-value">${w.eff}</span>
+    </div>`;
+  });
+  document.getElementById('ws-eff-bars').innerHTML = html;
+}
+buildWSDemo();
+
+// ── DECISION TREE THEORY EXPLORER ──
+const dtConcepts = [
+  { icon:'🏢', label:'Real-World Use', color:'#2a7fa8',
+    title:'How companies use decision trees',
+    body:'Companies use decision trees to choose the best strategy when the future is uncertain. For example, a firm deciding whether to launch a new product might map out: "If we launch and demand is high → profit $2M. If we launch and demand is low → loss $500K. If we don\'t launch → $0." The tree makes every path and its consequence visible before any money is spent.',
+    ms:'In Management Science, this is called Expected Value analysis — choosing the branch with the highest probability-weighted outcome.' },
+  { icon:'🎓', label:'Classroom Role', color:'#15803d',
+    title:'How decision trees train students',
+    body:'In a Management Science classroom, building a decision tree trains students to break a complex problem into clear, sequential steps. It forces you to identify all possible decisions, all possible chance outcomes, and all final consequences — preventing the common mistake of acting on only the most obvious path.',
+    ms:'This mirrors real management practice: structured problem decomposition before action is a core management science skill.' },
+  { icon:'⚠️', label:'Limitation: Oversimplification', color:'#dc2626',
+    title:'Decision trees can oversimplify reality',
+    body:'Real decisions rarely have neat, discrete branches. A company\'s options aren\'t just "launch" or "don\'t launch" — there are partial launches, different markets, timing variations, and combinations. A tree must choose a limited set of branches, which means it may miss important options or collapse complex outcomes into single nodes.',
+    ms:'This is why decision trees work best for structured, sequential problems — not for complex, continuous, or highly interactive decisions.' },
+  { icon:'📊', label:'Limitation: Data Needs', color:'#dc2626',
+    title:'Decision trees need a lot of accurate data',
+    body:'Every branch in a decision tree requires a probability estimate (how likely is this outcome?) and a payoff value (what is the result worth?). In practice, these numbers are often estimated, guessed, or based on historical data that may not apply to the current situation. Garbage in = garbage out.',
+    ms:'This is why sensitivity analysis (testing how results change when inputs change) is always recommended alongside decision trees.' },
+  { icon:'🎯', label:'Limitation: Input Sensitivity', color:'#b45309',
+    title:'Small input errors can flip the decision',
+    body:'Changing one probability by even 5–10% can completely change which branch has the highest expected value — meaning the model recommends a different decision entirely. This is dangerous if decision-makers treat the tree\'s output as certain rather than as one estimate under assumed conditions.',
+    ms:'From my sensitivity analysis experience (Project 04): a 5-hour budget change shifted the entire optimal solution. The same principle applies here — model outputs are sensitive to inputs.' },
+  { icon:'🔗', label:'Combining Methods', color:'#7c3aed',
+    title:'Can decision trees be combined with other methods?',
+    body:'Yes — and this is often the best approach. Decision trees can be combined with Monte Carlo simulation (to model probability distributions rather than single estimates), sensitivity analysis (to test robustness of outputs), and optimization models (to find the best combination of decisions). Each tool covers the weaknesses of the others.',
+    ms:'This portfolio is itself an example: Projects 01 and 04 use optimization, Projects 02 and 05 use decision tree thinking, and Project 03 uses systems thinking. Real management science is multi-tool.' },
+];
+
+function buildDTTheory() {
+  const grid = document.getElementById('dt-theory-grid');
+  if(!grid) return;
+  dtConcepts.forEach((c,i) => {
+    const btn = document.createElement('div');
+    btn.id = 'dtc-'+i;
+    btn.style.cssText = `background:var(--white);border:1.5px solid var(--mist);border-radius:var(--radius);
+      padding:0.8rem 1rem;cursor:pointer;transition:all .15s;`;
+    btn.innerHTML = `<div style="font-size:1.3rem;margin-bottom:0.3rem;">${c.icon}</div>
+      <div style="font-size:0.78rem;font-weight:600;">${c.label}</div>`;
+    btn.onclick = () => {
+      dtConcepts.forEach((_,j) => {
+        const b = document.getElementById('dtc-'+j);
+        b.style.borderColor = j===i ? dtConcepts[j].color : 'var(--mist)';
+        b.style.background  = j===i ? dtConcepts[j].color+'15' : 'var(--white)';
+      });
+      document.getElementById('dt-theory-output').innerHTML =
+        `<strong style="color:${c.color};">${c.icon} ${c.title}</strong><br/><br/>
+         ${c.body}<br/><br/>
+         <em style="color:var(--accent);font-size:0.82rem;">📐 Management Science connection: ${c.ms}</em>`;
+    };
+    grid.appendChild(btn);
+  });
+}
+buildDTTheory();
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
